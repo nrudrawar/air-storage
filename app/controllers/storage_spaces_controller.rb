@@ -2,18 +2,18 @@ class StorageSpacesController < ApplicationController
   before_action :find_storage_space, except: [:index]
 
   def index
-    @storage_spaces = Storage_space.all
+    @storage_spaces = StorageSpace.all
   end
 
   def show
   end
 
   def new
-    @storage_space = Storage_space.new
+    @storage_space = StorageSpace.new
   end
 
   def create
-    @storage_space = Storage_space.new(storage_space_params)
+    @storage_space = StorageSpace.new(storage_space_params)
     @storage_space.user = current_user
 
     if @storage_space.save
@@ -39,7 +39,7 @@ class StorageSpacesController < ApplicationController
   private
 
   def find_storage_space
-    @storage_space = Storage_space.find(params[:id])
+    @storage_space = StorageSpace.find(params[:id])
   end
 
   def storage_space_params
