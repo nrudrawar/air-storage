@@ -1,8 +1,12 @@
 class StorageSpacesController < ApplicationController
-  before_action :find_storage_space, except: [:index]
+  before_action :find_storage_space, except: [:index, :my_spaces]
 
   def index
     @storage_spaces = StorageSpace.all
+  end
+
+  def my_spaces
+    @storage_spaces= current_user.storage_spaces
   end
 
   def show

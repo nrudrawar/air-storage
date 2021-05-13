@@ -1,8 +1,12 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, except: [:index]
+  before_action :find_booking, except: [:index, :my_bookings]
 
   def index
     @bookings = Booking.all
+  end
+
+  def my_bookings
+    @bookings = current_user.bookings
   end
 
   def show
