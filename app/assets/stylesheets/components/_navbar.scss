@@ -1,12 +1,29 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: $blue;
+  color: $white;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+h1.site-title {
+  font-size: 32px;
+  font-family: 'Sigmar One', cursive;
+}
+
+.fa-warehouse:before {
+  color: $white;
+  font-size: 80px;
+}
+
+.nav-link {
+  color: $white !important;
+  font-family: 'Sigmar One', cursive;
+}
+
+.dropdown-menu {
+  border-radius: 4px;
+  background: #F4F4F4;
 }
