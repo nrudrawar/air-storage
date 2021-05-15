@@ -2,7 +2,15 @@ class StorageSpacesController < ApplicationController
   before_action :find_storage_space, except: [:index, :new, :create, :my_spaces]
 
   def index
-    @storage_spaces = StorageSpace.all
+    @storage_spaces = StorageSpace.where.not(latitude: nil, longitude: nil)
+
+    @markers = @storage_spaces.geocoded.map do |storage_space|
+      {
+        lat: storage_space.latitude,
+        lng: storage_space.longitude,
+        infoWindow: render_to_string(partial: "/storage_spaces/info_window", locals: { storage_space: storage_space })
+      }
+    end
   end
 
   def my_spaces
