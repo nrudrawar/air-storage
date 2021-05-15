@@ -2,12 +2,13 @@
 .hero {
   background-image: url('https://images.unsplash.com/photo-1529148482759-b35b25c5f217?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2800&q=80');
   width: 100vw;
-  height: 90vh;
+  height: 84vh;
   object-fit: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  max-width:100%;
 }
 
 .hero h1 {
