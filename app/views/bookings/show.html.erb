@@ -1,0 +1,23 @@
+<div class="container py-5">
+  <div class="row justify-center">
+    <div class="col-12">
+    <% @booking.storage_space.photos.each do |photo, index| %>
+        <% if index == 0  %>
+          <%= cl_image_tag photo.key, crop: :fill, class: 'show-img' %>
+        <% else %>
+          <div>
+            <%= cl_image_tag photo.key, crop: :fill, class: 'show-img' %>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="my-1">
+        <%= link_to "Back", my_bookings_path  %>
+        <%= link_to "Edit", edit_booking_path(@booking), class: 'btn btn-primary' %>
+      </div>
+      <h1><%= link_to "#{@booking.storage_space.name}", storage_space_path(@booking.storage_space) %></h1>
+      <p><%= @booking.storage_space.address %></p>
+      <p>From <%= @booking.start_date %> to <%= @booking.end_date %></p>
+      <h3><%= @booking.price %>€</h3>
+    </div>
+  </div>
+</div>

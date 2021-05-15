@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, except: [:index, :my_bookings]
+  before_action :find_booking, except: [:index, :new, :create, :my_bookings]
+  before_action :find_storage_space, except: [:index, :edit, :update,  :show, :my_bookings]
 
   def index
     @bookings = Booking.all
@@ -19,8 +20,11 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @booking.storage_space = @storage_space
+    @booking.price = calculate_price
 
     if @booking.save
+
       redirect_to @booking, notice: "Booking was successfully created"
     else
       render :new
@@ -28,10 +32,14 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    @storage_space = @booking.storage_space
   end
 
   def update
     @booking.update(booking_params)
+    @storage_space = @booking.storage_space
+    @booking.price = calculate_price
+    @booking.save
     redirect_to @booking
   end
 
@@ -44,6 +52,14 @@ class BookingsController < ApplicationController
 
   def find_booking
     @booking = Booking.find(params[:id])
+  end
+
+  def find_storage_space
+    @storage_space = StorageSpace.find(params[:storage_space_id])
+  end
+
+  def calculate_price
+    (@booking.end_date - @booking.start_date) * @storage_space.base_price
   end
 
   def booking_params

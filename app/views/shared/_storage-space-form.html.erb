@@ -1,0 +1,16 @@
+<%= simple_form_for(@storage_space) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :area %>
+  <%= f.input :address %>
+  <%= f.input :city %>
+  <%= f.input :country, as: :string %>
+  <%= f.input :post_code %>
+  <%= f.input :description, as: :text, :input_html => {:style => 'width: 100%', :rows => 5, class: ''} %>
+  <%= f.input :base_price %>
+  <%= f.input :available %>
+  <%= f.input :status %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit class: 'btn btn-primary' %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+<% end %>
