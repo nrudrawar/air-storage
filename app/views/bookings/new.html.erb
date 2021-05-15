@@ -1,0 +1,14 @@
+<div class="container py-5">
+  <div class="row justify-center">
+    <div class="col-6">
+      <h1> Create a new Booking</h1>
+      <p>Book the storage of your dreams in just a few clicks</p>
+      <h5 id="price-field"> <%= @storage_space.base_price  %>€/day </h5>
+      <br>
+      <%= render 'shared/create-bookings-form' %>
+    </div>
+    <div class="col-6">
+      <%= cl_image_tag @storage_space.photos[0].key, crop: :fill, class: 'form-img' %>
+    </div>
+  </div>
+</div>
