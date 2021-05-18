@@ -9,9 +9,9 @@
     </button>
   </div>
 </div>
-<div class="container">
+<div class="container my-4">
   <div class="row-justify-content-center">
-    <div class="col-12">
+    <div class="col-12 mb-4">
       <h1>Find the exact storage space you need</h1>
       <h2>More than 158,000 storage spaces available accross 67 countries</h2>
     </div>
@@ -22,6 +22,22 @@
         </div>
       <% end %>
 
+      <%= link_to storage_spaces_path, class:'text-decoration-none' do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1591129841117-3adfd313e34f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80)">
+          Drawer
+        </div>
+      <% end %>
+
+      <%= link_to storage_spaces_path, class:'text-decoration-none' do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1572734389279-e4fa423ca9db?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=631&q=80)">
+          Shelf
+        </div>
+      <% end %>
+            <%= link_to storage_spaces_path, class:'text-decoration-none' do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/flagged/photo-1566838616793-29a4102a5b0e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80)">
+          Garage
+        </div>
+      <% end %>
       <%= link_to storage_spaces_path, class:'text-decoration-none' do %>
         <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1591129841117-3adfd313e34f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80)">
           Drawer

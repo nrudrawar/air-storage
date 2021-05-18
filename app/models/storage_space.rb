@@ -1,5 +1,5 @@
 class StorageSpace < ApplicationRecord
-  validates :name, :address, :city, :post_code, :country, :base_price, presence: true
+  validates :name, :address, :base_price, presence: true
 
   has_many_attached :photos
   has_many :bookings

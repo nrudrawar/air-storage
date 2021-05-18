@@ -18,6 +18,7 @@ class StorageSpacesController < ApplicationController
   end
 
   def show
+    @booking = Booking.new(storage_space: @storage_space)
   end
 
   def new
@@ -55,8 +56,8 @@ class StorageSpacesController < ApplicationController
   end
 
   def storage_space_params
-    params.require(:storage_space).permit(:name, :area, :address, :city,
-                  :post_code, :country, :description, :available, :base_price,
-                  :status, photos: [])
+    params.require(:storage_space).permit(:name,:address,
+                  :description, :available, :base_price,
+                  photos: [])
   end
 end
