@@ -19,10 +19,36 @@
           </div>
         <% end %>
        <% end %>
-      <div class="my-1">
-        <p><%= @storage_space.description %></p>
-        <%= link_to "Back", storage_spaces_path  %>
+      <div class="row my-4">
+          <div class="col-6">
+            <p><%= @storage_space.description %></p>
+            <%= link_to "Back", storage_spaces_path  %>
+          </div>
+          <div class="col-6">
+            <% if @storage_space.user != current_user %>
+              <%= render 'shared/create-bookings-form' %>
+            <% end %>
+          </div>
       </div>
+    </div>
+  </div>
+  <hr class="my-5">
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <h3>Reviews</h3>
+      <% if @storage_space.reviews.empty? %>
+        <small><em class="text-muted">There are no reviews for the storage space yet.</em></small>
+      <% end %>
+      <% @storage_space.reviews.each do |review| %>
+        <div>
+          <% review.rating.times do %>
+            <i class="fas fa-star star-yellow"></i>
+          <% end %>
+          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
+          <p class="mb-0"><%= review.comment %></p>
+        </div>
+        <hr>
+      <% end %>
     </div>
   </div>
 </div>
