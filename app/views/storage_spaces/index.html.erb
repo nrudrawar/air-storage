@@ -2,7 +2,7 @@
   <div class="row justify-center">
     <div class="col-6">
       <% @storage_spaces.each do |storage_space| %>
-        <div class="card-product my-4">
+        <div class="card-product mb-4">
           <%= cl_image_tag storage_space.photos[0].key, crop: :fill %>
           <div class="card-product-infos">
             <h2><%= storage_space.name %></h2>
@@ -10,7 +10,12 @@
             <p><%= storage_space.base_price %>€/day</p>
             <div class="card-buttons text-right">
               <%= link_to "Show", storage_space_path(storage_space) %>
-              <%= link_to "Book", new_storage_space_booking_path(storage_space), class: 'btn btn-primary' %>
+              <% if storage_space.user == current_user %>
+                <%= link_to "Delete", storage_space_path(storage_space), method: :delete, data: { confirm: "Are you sure?" } %>
+                <%= link_to "Edit", edit_storage_space_path(storage_space), class: 'btn btn-primary' %>
+              <% else %>
+                <%= link_to "Book", new_storage_space_booking_path(storage_space), class: 'btn btn-primary' %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -18,9 +23,9 @@
     </div>
     <div class="col-6">
       <div id="map"
-      style="width: 100%; height: 600px;"
       data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
     </div>
   </div>
 </div>
