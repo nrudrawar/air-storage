@@ -1,3 +1,8 @@
 .show-img {
   max-height: 600px;
 }
+
+.container-photo-grid {
+  grid-template-columns: 2fr 1fr 1fr;
+}
+ 

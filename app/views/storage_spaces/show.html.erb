@@ -11,15 +11,11 @@
         <%= link_to "Book", new_storage_space_booking_path(@storage_space), class: 'btn btn-primary' %>
       <% end %>
       <p></p>
-      <% @storage_space.photos.each do |photo, index| %>
-        <% if index == 0  %>
-          <%= cl_image_tag photo.key, crop: :fill, class: 'show-img' %>
-        <% else %>
-          <div>
-            <%= cl_image_tag photo.key, crop: :fill, class: 'show-img' %>
-          </div>
-        <% end %>
-       <% end %>
+      <div class="row my-4">
+        <div class="col-6">
+          <%= cl_image_tag @storage_space.photos[0].key, crop: :fill, class: 'show-img' %></div>
+        <div></div>
+      </div>
       <div class="row my-4">
           <div class="col-6">
             <p><%= @storage_space.description %></p>
