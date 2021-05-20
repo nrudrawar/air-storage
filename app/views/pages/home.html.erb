@@ -1,5 +1,5 @@
 <div class="hero">
-  <div class="input-group">
+<!--   <div class="input-group">
     <div class="form-outline">
       <input type="search" id="form1" class="form-control" placeholder="This is where our search is going to be" />
       <label class="form-label" for="form1"></label>
@@ -7,7 +7,15 @@
     <button type="button" class="btn btn-primary">
       <i class="fas fa-search"></i>
     </button>
-  </div>
+  </div> -->
+  <%= form_tag storage_spaces_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find your perfect storage space"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary mt-2" %>
+  <% end %>
 </div>
 <div class="container my-4">
   <div class="row-justify-content-center">
