@@ -49,8 +49,8 @@ class StorageSpacesController < ApplicationController
   end
 
   def destroy
-    @storage_space.update(status: "inactive")
-    redirect_to storage_spaces_path, notice: "Successfully desactivated"
+    @storage_space.destroy
+    redirect_to storage_spaces_path, notice: "Successfully deleted"
   end
 
   private
