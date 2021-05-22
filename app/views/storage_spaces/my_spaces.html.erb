@@ -7,16 +7,22 @@
       <% @storage_spaces.each do |storage_space| %>
         <div class="card-product my-4">
           <%= cl_image_tag storage_space.photos[0].key, crop: :fill %>
-          <div class="card-product-infos">
-            <h2><%= storage_space.name %></h2>
-            <p><%= storage_space.description %></p>
-            <p><%= storage_space.base_price %>€/day</p>
-            <div class="card-buttons text-right">
-              <%= link_to "Delete", storage_space_path(storage_space), method: :delete, data: { confirm: "Are you sure?" } %>
-              <%= link_to "Show", storage_space_path(storage_space) %>
-              <%= link_to "Edit", edit_storage_space_path(storage_space), class: 'btn btn-primary' %>
+          <div class="card-right">
+            <div class="card-product-infos">
+              <h2><%= storage_space.name %></h2>
+              <p class="card-description"><%= storage_space.description %></p>
             </div>
-          </div>
+            <div class="card-bottom">
+              <div class="card-price-infos">
+                <a><%= storage_space.base_price %>€/day</a>
+              </div>
+              <div class="card-buttons text-right">
+                <%= link_to "Delete", storage_space_path(storage_space), method: :delete, data: { confirm: "Are you sure?" } %>
+                <%= link_to "Show", storage_space_path(storage_space) %>
+                <%= link_to "Edit", edit_storage_space_path(storage_space), class: 'btn btn-primary' %>
+              </div>
+            </div>           
+          </div>             
         </div>
       <% end %>
     </div>
