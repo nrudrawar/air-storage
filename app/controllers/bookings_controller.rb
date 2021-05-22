@@ -60,7 +60,7 @@ class BookingsController < ApplicationController
   end
 
   def calculate_price
-    (@booking.end_date - @booking.start_date) * @storage_space.base_price
+    ((@booking.end_date - @booking.start_date) + 1) * @storage_space.base_price
   end
 
   def booking_params
