@@ -3,10 +3,10 @@
     <div class="col-12">
       <h1><%= @storage_space.name %></h1>
       <p><%= @storage_space.address %></p>
-      <h3><%= @storage_space.base_price %>€ / day</h3>
-      <% if @storage_space.reviews.empty?%>
-        <p><small><em class="text-muted">No reviews yet!.</em></small></p>
-      <% else %>
+      <h3><span id="price-field"><%= @storage_space.base_price %></span>€ / day</h3>
+        <% if @storage_space.reviews.empty?%>
+          <p><small><em class="text-muted">No reviews yet!.</em></small></p>
+        <% else %>
         <p>
           <% @storage_space.reviews.average(:rating).to_i.times do %>
             <i class="fas fa-star star-yellow"></i>
@@ -38,6 +38,7 @@
           </div>
           <div class="col-6">
             <% if @storage_space.user != current_user %>
+              <h3>Book this storage now</h3>
               <%= render 'shared/create-bookings-form' %>
             <% end %>
           </div>
