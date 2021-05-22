@@ -22,22 +22,28 @@ ActiveStorage.start()
 // External imports
 import "bootstrap";
 
-// Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+// Flatpickr
+import flatpickr from "flatpickr";
+require("flatpickr/dist/flatpickr.css")
+
+//StarRating
+import { initStarRating } from '../plugins/star_rating';
 import 'jquery-bar-rating/dist/themes/css-stars';
 
+//MapBox
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
-import { initStarRating } from '../plugins/star_rating';
-
-// Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
-
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
+
+//PriceCalculation
+import { initBookingPriceCalculation } from '../plugins/booking_price_calculation';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
   initStarRating();
+  flatpickr("#booking_start_date", {});
+  flatpickr("#booking_end_date", {});
+  initBookingPriceCalculation();
 })

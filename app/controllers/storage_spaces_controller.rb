@@ -3,9 +3,9 @@ class StorageSpacesController < ApplicationController
 
   def index
     if params[:query]
-        @storage_spaces = StorageSpace.search_name_address_description(params[:query]).where.not(latitude: nil, longitude: nil)
+      @storage_spaces = StorageSpace.search_name_address_description(params[:query]).where.not(latitude: nil, longitude: nil)
     else
-        @storage_spaces = StorageSpace.all
+      @storage_spaces = StorageSpace.all
     end
 
     @markers = @storage_spaces.geocoded.map do |storage_space|
@@ -22,6 +22,10 @@ class StorageSpacesController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: { storage_spaces: @storage_spaces } }
+    end
     @booking = Booking.new(storage_space: @storage_space)
   end
 

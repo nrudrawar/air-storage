@@ -1,7 +1,17 @@
 <%= simple_form_for [@storage_space, @booking] do |f| %>
-  <%= f.input :start_date, as: :date %>
-  <%= f.input :end_date, as: :date %>
+  <div class="d-flex justify-content-between">
+  <%= f.input :start_date, as: :string %>
+  <%= f.input :end_date, as: :string %>
+  </div>
   <%= f.submit class: 'btn btn-primary' %>
+  <div class="pt-3">
+    <p><span id="booking-price-per-day"></span> € x <span id="total-booking-days"></span> days</p>
+    <hr>
+    <div class="d-flex justify-content-between font-weight-bold">
+    <p>Total</p>
+    <p><span id="total-booking-price"></span> €</p>
+    </div>
+  </div>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 <% end %>
