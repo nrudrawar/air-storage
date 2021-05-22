@@ -1,24 +1,28 @@
 <div class="container py-5">
   <div class="row justify-center">
-    <div class="col-6">
+    <div class="col-12">
       <h1>My Bookings</h1>
       <h2>I'm so happy I found some space for my stuff.</h2>
       <%= link_to "Find more air storage", storage_spaces_path, class: 'btn btn-primary'%>
+    </div>
+    <div class="row justify-center">
       <% @bookings.each do |booking| %>
-        <div class="card-product my-4">
-          <%= cl_image_tag booking.storage_space.photos[0].key, crop: :fill %>
-          <div class="card-right">
-            <div class="card-product-infos">
-              <h2><%= booking.storage_space.name %></h2>
-              <p>From <%= booking.start_date %> to <%= booking.end_date %></p>
-            </div>
-            <div class="card-bottom">
+        <div class="col-4">
+          <div class="card-product my-4">
+            <%= cl_image_tag booking.storage_space.photos[0].key, crop: :fill %>
+            <div class="card-right">
+              <div class="card-product-infos">
+                <h2><%= booking.storage_space.name %></h2>
+                <p>From <%= booking.start_date %> to <%= booking.end_date %></p>
+              </div>
               <div class="card-price-infos">
                 <a><%= booking.price %>€</a>
               </div>
-              <div class="card-buttons text-right">
-                <%= link_to "Show", booking_path(booking) %>
-                <%= link_to "Edit", edit_booking_path(booking), class: 'btn btn-primary' %>
+              <div class="card-bottom">
+                <div class="card-buttons text-right">
+                  <%= link_to "Show", booking_path(booking) %>
+                  <%= link_to "Edit", edit_booking_path(booking), class: 'btn btn-primary' %>
+                </div>
               </div>
             </div>
           </div>
