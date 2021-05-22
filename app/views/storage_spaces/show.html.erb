@@ -4,6 +4,17 @@
       <h1><%= @storage_space.name %></h1>
       <p><%= @storage_space.address %></p>
       <h3><span id="price-field"><%= @storage_space.base_price %></span>€ / day</h3>
+        <% if @storage_space.reviews.empty?%>
+          <p><small><em class="text-muted">No reviews yet!.</em></small></p>
+        <% else %>
+        <p>
+          <% @storage_space.reviews.average(:rating).to_i.times do %>
+            <i class="fas fa-star star-yellow"></i>
+          <% end %>
+          /
+          <%= pluralize @storage_space.reviews.size, "review"%>
+        </p>
+      <% end %>
       <% if @storage_space.user == current_user %>
         <%= link_to "Delete", storage_space_path(@storage_space), method: :delete, data: { confirm: "Are you sure?" } %>
         <%= link_to "Edit", edit_storage_space_path, class: 'btn btn-primary' %>
