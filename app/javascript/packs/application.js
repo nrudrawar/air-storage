@@ -27,14 +27,17 @@ import "bootstrap";
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+import 'jquery-bar-rating/dist/themes/css-stars';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
+import { initStarRating } from '../plugins/star_rating';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
+  initStarRating();
 })
